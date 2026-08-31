@@ -9,6 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Test Results\**" />
+    <EmbeddedResource Remove="Test Results\**" />
+    <None Remove="Test Results\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Configuration\appsettings.json" />
   </ItemGroup>
 
@@ -42,6 +48,7 @@
 		</None>
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Test Results\Html Reports\Screenshots\Traces\" />
+	  <Folder Include="TestResults\HtmlReports\Traces\" />
+	  <Folder Include="TestResults\HtmlReports\Screenshots\" />
 	</ItemGroup>
 </Project>
