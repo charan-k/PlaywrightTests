@@ -9,6 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Test Results\**" />
+    <EmbeddedResource Remove="Test Results\**" />
+    <None Remove="Test Results\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Configuration\appsettings.json" />
   </ItemGroup>
 
@@ -30,6 +36,7 @@
     <PackageReference Include="NUnit" Version="4.3.2" />
     <PackageReference Include="NUnit.Analyzers" Version="4.7.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="5.0.0" />
+    <PackageReference Include="NUnit.Extension.TestMonitor" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,5 +46,9 @@
 		<None Update="appsettings.CI.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="TestResults\HtmlReports\Traces\" />
+	  <Folder Include="TestResults\HtmlReports\Screenshots\" />
 	</ItemGroup>
 </Project>

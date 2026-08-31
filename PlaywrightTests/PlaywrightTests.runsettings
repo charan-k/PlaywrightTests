@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+	<TestRunParameters>
+		<Parameter name="screenshot" value="only-on-failure" />
+		<Parameter name="trace" value="retain-on-failure" />
+		<Parameter name="video" value="off" />
+	</TestRunParameters>
+	<RunConfiguration>
+		<MaxCpuCount>1</MaxCpuCount>
+		<ResultsDirectory>.\TestResults\HtmlReports</ResultsDirectory>
+	</RunConfiguration>
+	<NUnit>
+		<NumberOfTestWorkers>1</NumberOfTestWorkers>
+	</NUnit>
+</RunSettings>
