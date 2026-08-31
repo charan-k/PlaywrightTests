@@ -37,6 +37,7 @@
     <PackageReference Include="NUnit.Analyzers" Version="4.7.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="5.0.0" />
     <PackageReference Include="NUnit.Extension.TestMonitor" Version="1.0.0" />
+    <PackageReference Include="Reqnroll.NUnit" Version="3.3.4" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,6 +49,8 @@
 		</None>
 	</ItemGroup>
 	<ItemGroup>
+	  <Folder Include="Features\DemoQA\" />
+	  <Folder Include="Features\SauceDemo\" />
 	  <Folder Include="TestResults\HtmlReports\Traces\" />
 	  <Folder Include="TestResults\HtmlReports\Screenshots\" />
 	</ItemGroup>
