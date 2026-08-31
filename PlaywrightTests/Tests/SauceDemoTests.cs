@@ -8,12 +8,13 @@ namespace PlaywrightTests.Tests
     public class SauceDemoTests : BaseTest
     {
         // ✅ Constants
-        private const string BaseUrl = "https://www.saucedemo.com/";
-        private const string UserName = "standard_user";
-        private const string Password = "secret_sauce";
-        private const string FirstName = "John";
-        private const string LastName = "Doe";
-        private const string PostalCode = "12345";
+        // ADD THESE LINES instead (after class opening brace):
+        private string BaseUrl => Settings.SauceDemoBaseUrl;
+        private string UserName => Settings.SauceDemoUsername;
+        private string Password => Settings.SauceDemoPassword;
+        private string FirstName => Settings.TestUserFirstName;
+        private string LastName => Settings.TestUserLastName;
+        private string PostalCode => Settings.TestUserPostalCode;
 
         // ✅ Store price for comparison
         private string _itemPriceFromInventory = string.Empty;

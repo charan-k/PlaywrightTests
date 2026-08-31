@@ -2,6 +2,7 @@
 using Microsoft.Playwright;
 using NUnit.Framework;
 using PlaywrightTests.Base;
+using PlaywrightTests.Configuration;
 
 namespace PlaywrightTests.Tests
 {
@@ -15,7 +16,7 @@ namespace PlaywrightTests.Tests
             await LaunchBrowser(browserName);
 
             // ✅ Step 1: Navigate to Google
-            await _page.GotoAsync("https://www.google.com/");
+            await _page.GotoAsync(TestSettingsLoader.Load().GoogleBaseUrl);
             Console.WriteLine($"✅ [{browserName.ToUpper()}] Navigated to Google");
 
             // ✅ Wait for page to fully load
