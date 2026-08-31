@@ -1,4 +1,4 @@
-﻿// Tests/SearchLocatorTests.cs
+﻿// Tests/GoogleSearchLocatorTests.cs
 using Microsoft.Playwright;
 using NUnit.Framework;
 using PlaywrightTests.Base;
