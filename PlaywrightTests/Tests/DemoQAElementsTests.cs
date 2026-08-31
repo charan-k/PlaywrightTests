@@ -2,13 +2,16 @@
 using Microsoft.Playwright;
 using NUnit.Framework;
 using PlaywrightTests.Base;
+using PlaywrightTests.Configuration;
 
 namespace PlaywrightTests.Tests
 {
     [TestFixture]
     public class DemoQAElementsTests : BaseTest
     {
-        private const string BaseUrl = "https://demoqa.com";
+        // ADD (after class opening brace):
+        private string BaseUrl =>
+            TestSettingsLoader.Load().DemoQABaseUrl;
 
         [Test]
         [TestCaseSource(nameof(BrowserTestData))]
@@ -45,6 +48,7 @@ namespace PlaywrightTests.Tests
         public async Task DemoQA_CheckBox_Complete(string browserName)
         {
             await LaunchBrowser(browserName);
+            // FIND in DemoQA_CheckBox_Complete method:
             await _page.GotoAsync("https://demoqa.com/checkbox");
             await _page.WaitForLoadStateAsync(LoadState.DOMContentLoaded);
 

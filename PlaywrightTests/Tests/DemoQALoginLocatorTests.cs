@@ -2,13 +2,17 @@
 using Microsoft.Playwright;
 using NUnit.Framework;
 using PlaywrightTests.Base;
+using PlaywrightTests.Configuration;
 
 namespace PlaywrightTests.Tests
 {
     [TestFixture]
     public class DemoQALoginLocatorTests : BaseTest
     {
-        private const string LoginUrl = "https://demoqa.com/login";
+        // ADD (after class opening brace):
+        private string LoginUrl =>
+            TestSettingsLoader.Load().DemoQALoginUrl;
+
 
         [Test]
         [TestCaseSource(nameof(BrowserTestData))]

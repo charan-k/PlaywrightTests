@@ -2,6 +2,8 @@
 //Tests/MultiBrowserTests
 using Microsoft.Playwright;
 using NUnit.Framework;
+using PlaywrightTests.Configuration;
+using System.Threading.Channels;
 
 namespace PlaywrightTests.Tests
 {
@@ -13,12 +15,18 @@ namespace PlaywrightTests.Tests
         private IBrowserContext _context;
         private IPage _page;
 
-        // ✅ Test Data — Browser Name & URL
+        // REPLACE BrowserTestData with:
+        private static string GoogleUrl =>
+            TestSettingsLoader.Load().GoogleBaseUrl;
+
         private static readonly object[] BrowserTestData =
         {
-            new object[] { "chrome",    "https://www.google.com/" },
-            new object[] { "firefox",   "https://www.google.com/" },
-            new object[] { "webkit",    "https://www.google.com/" }
+        new object[] { "chrome",
+            TestSettingsLoader.Load().GoogleBaseUrl },
+        new object[] { "firefox",
+            TestSettingsLoader.Load().GoogleBaseUrl },
+        new object[] { "webkit",
+            TestSettingsLoader.Load().GoogleBaseUrl }
         };
 
         [SetUp]
@@ -32,6 +40,8 @@ namespace PlaywrightTests.Tests
         [Description("Launch Google in Chrome, Firefox & WebKit")]
         public async Task NavigateToGoogle_InMultipleBrowsers(string browserName, string url)
         {
+            var settings = TestSettingsLoader.Load();
+            
             Console.WriteLine($"🚀 Launching Browser: {browserName.ToUpper()}");
 
             // ✅ Step 1: Launch the correct browser
@@ -39,19 +49,19 @@ namespace PlaywrightTests.Tests
             {
                 "chrome" => await _playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
                 {
-                    Channel = "chrome",  // ✅ Real Google Chrome
-                    Headless = false,
-                    SlowMo = 500
+                    Channel = settings.Channel,
+                    Headless = settings.Headless,
+                    SlowMo = settings.SlowMo
                 }),
                 "firefox" => await _playwright.Firefox.LaunchAsync(new BrowserTypeLaunchOptions
                 {
-                    Headless = false,
-                    SlowMo = 500
+                    Headless = settings.Headless,
+                    SlowMo = settings.SlowMo
                 }),
                 "webkit" => await _playwright.Webkit.LaunchAsync(new BrowserTypeLaunchOptions
                 {
-                    Headless = false,
-                    SlowMo = 500
+                    Headless = settings.Headless,
+                    SlowMo = settings.SlowMo
                 }),
                 _ => throw new ArgumentException($"❌ Unknown browser: {browserName}")
             };
